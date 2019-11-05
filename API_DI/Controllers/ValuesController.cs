@@ -14,7 +14,7 @@ namespace API_DI.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "value1", "value2","value preuve" };
+            return new string[] { "value1", "value2","value preuve", "preuve developper" };
         }
 
         // GET api/values/5
