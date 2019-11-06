@@ -18,6 +18,8 @@ using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using IO.Swagger.Filters;
+using API_DI.Contexts;
+using Microsoft.EntityFrameworkCore;
 
 namespace API_DI
 {
@@ -42,6 +44,10 @@ namespace API_DI
         {
             //Add MVC
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            //DbContext
+            services
+                .AddDbContext<ApplicationDbContext>(options => 
+                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             //Add Swagger generator
             services.AddSwaggerGen(c =>
              {
