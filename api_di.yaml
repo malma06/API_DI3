@@ -1,0 +1,71 @@
+---
+swagger: "2.0"
+info:
+  description: This is a simple API pour categoriser les demandes de places de servises de garde
+  version: 1.0.0
+  title: Simple Inventory API
+  contact:
+    email: manuel-alejandro.maldonado-rojas@mfa.gouv.qc.ca
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+host: virtserver.swaggerhub.com
+basePath: /malma06/categorisation-api/1.0.0
+schemes:
+- https
+- http
+paths:
+  /categoriser:
+    get:
+      summary: demander la categorie de la demande
+      description: demander à l'API la categorie de la demande selon les quatre code de chaqun de les process de identification.
+      produces:
+      - application/json
+      parameters:
+      - name: code1
+        in: query
+        description: code de validation des reinsegments de la demande de place
+        required: true
+        type: string
+      - name: code2
+        in: query
+        description: code de validation des possibles services de garde pour la demande
+        required: true
+        type: string
+      - name: code3
+        in: query
+        description: code de validation de localisation des possibles services de garde pour la demande
+        required: true
+        type: string
+      - name: code4
+        in: query
+        description: code de validation de l'identification de l-enfant de la demande de place
+        required: true
+        type: string
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/CategorieDemande'
+        400:
+          description: bad input parameter
+definitions:
+  CategorieDemande:
+    type: object
+    required:
+    - description
+    - id
+    - name
+    properties:
+      id:
+        type: string
+        format: Widget Adapter
+        example: "1"
+      name:
+        type: string
+        format: Widget Adapter
+        example: Fiable
+      description:
+        type: string
+        format: Widget Adapter
+        example: Correct pour tous les validations

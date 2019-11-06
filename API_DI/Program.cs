@@ -10,6 +10,8 @@ using Microsoft.Extensions.Logging;
 
 namespace API_DI
 {
+
+    //verification avec la version genereé pour swagger, identique
     public class Program
     {
         public static void Main(string[] args)
